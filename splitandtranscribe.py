@@ -3,7 +3,9 @@ from moviepy.editor import VideoFileClip
 import whisper
 
 # Step 1: Store the long path separately (dynamic input file)
-video_file_path = "/Users/zacharylong/Library/CloudStorage/Dropbox/NYU MSBA/Module 1/Intro to BA/Course Recordings/XBA1-GB-8336-84S23512023-01.mp4"
+videopath = "/Users/zacharylong/Library/CloudStorage/Dropbox/NYU MSBA/Module 1/Digital Mktg Analytics/Course Recordings/"
+filesname = "Dgtl Mktg Day 1 AM XBA1-GB-8150-84S23552023.mp4"
+video_file_path = videopath + filesname
 
 # Step 2: Extract the base file name (without path and extension)
 base_name = os.path.splitext(os.path.basename(video_file_path))[0]
