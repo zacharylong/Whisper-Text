@@ -2,10 +2,32 @@ import os
 import glob
 import re
 import urllib.parse
+from pytube import YouTube
+
+
+# Function to clean the video title for a valid filename
+def clean_filename(title):
+    # Remove special characters using regex, only allow alphanumeric, dashes, and underscores
+    return re.sub(r"[^A-Za-z0-9_\- ]+", "", title)
+
 
 # 1. Enter a URL for a YouTube video
 url = input("Enter the YouTube video URL: ")
 
+# Access the YouTube video using pytube
+yt = YouTube(url)
+
+# Get the title of the video
+video_title = yt.title
+
+# Get the channel name
+channel_name = yt.author
+
+# Clean the video title for file saving
+cleaned_title = clean_filename(video_title)
+cleaned_channel_name = clean_filename(channel_name)
+
+yt = YouTube(url)
 
 # Extract a safe filename from the URL by getting the video ID
 def extract_video_id(url):
@@ -66,7 +88,8 @@ model = whisper.load_model("base")  # Options: 'tiny', 'small', 'medium', 'large
 result = model.transcribe(audio_file)
 transcription = result["text"]
 
-transcription_file = f"{filename_base}_transcription.txt"
+# transcription_file = f"{filename_base}_transcription.txt"
+transcription_file = f"{cleaned_channel_name} - {cleaned_title}_transcription.txt"
 with open(transcription_file, "w", encoding="utf-8") as f:
     f.write(transcription)
 
