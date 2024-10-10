@@ -5,4 +5,5 @@ venv/
 .venv/
 *.webm
 *.mp3
+*.m4a
 *.flac

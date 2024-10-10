@@ -3,7 +3,7 @@ from moviepy.editor import VideoFileClip
 import whisper
 
 # Step 1: Define the directory containing the video files
-video_directory = "/Users/zacharylong/Library/CloudStorage/Dropbox/NYU MSBA/Module 3/Data Mining in R/Course Recordings"
+video_directory = "/Users/zacharylong/dwhelper"
 
 # Step 2: Load the Whisper model
 model = whisper.load_model("base")
